@@ -25,7 +25,8 @@ class WebViewAppHome extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Webview',
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple, visualDensity: VisualDensity.standard),
+          primarySwatch: Colors.deepPurple,
+          visualDensity: VisualDensity.standard),
       debugShowCheckedModeBanner: false,
       home: const StartPage(),
     );

@@ -33,34 +33,49 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // _webBrowser.openUrlRequest(
-    //     urlRequest: URLRequest(url: Uri.parse(_url)), options: options);
+    _webBrowser.openUrlRequest(
+        urlRequest: URLRequest(url: Uri.parse(_url)), options: options);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text("Softxbd"),
+        ),
         body: Center(
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton.icon(
-                onPressed: () {
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-                },
-                icon: const Icon(Icons.close),
-                label: const Text("Exit App")),
-            const SizedBox(
-              width: 10,
-            ),
-            ElevatedButton.icon(
-                onPressed: () {
-                  _webBrowser.openUrlRequest(
-                      urlRequest: URLRequest(url: Uri.parse(_url)),
-                      options: options);
-                },
-                icon: const Icon(Icons.refresh),
-                label: const Text("Enter App"))
-          ]),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Do you want to exit app?",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                ElevatedButton.icon(
+                    onPressed: () {
+                      SystemChannels.platform
+                          .invokeMethod('SystemNavigator.pop');
+                    },
+                    icon: const Icon(Icons.close),
+                    label: const Text("Exit App")),
+                const SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      _webBrowser.openUrlRequest(
+                          urlRequest: URLRequest(url: Uri.parse(_url)),
+                          options: options);
+                    },
+                    icon: const Icon(Icons.refresh),
+                    label: const Text("Enter App"))
+              ]),
+            ],
+          ),
         ));
   }
 }
